@@ -5,10 +5,10 @@ function flip(times, heads, faces) {
     for (ii = 0; ii < rtimes; ii++) {
 
         for (i = 0; i < 10; i++) {
-			var thistime = Math.floor(Math.random() * faces);//console.log(thistime);
+			var thistime = Math.floor(Math.random() * faces); //console.log(thistime);
 			if (thistime == 1) {
 				chits = chits + 1;
-			}//console.log("i "+i+" "+thistime+" "+chits);
+			} //console.log("i "+i+" "+thistime+" "+chits);
             var thistime = 0;
 		}
 		if (chits >= heads) {
