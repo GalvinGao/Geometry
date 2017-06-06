@@ -1,3 +1,5 @@
+// = Question 1 = //
+
 function qone(heads){
 
 var mainCount = 0;
@@ -23,6 +25,23 @@ document.getElementById("result").innerHTML = posibility;
 
 }
 
+// = Question 2 = //
+
+function qtwo(rtimes,match){
+ var matched=0;
+ for (k=0;k<rtimes;k++){
+  var dice1=Math.floor(Math.random()*6+1);
+  var dice2=Math.floor(Math.random()*6+1);
+  var dice3=Math.floor(Math.random()*6+1);
+  var diceSum=dice1+dice2+dice3;
+  if (diceSum>match){
+    matched=matched+1;
+  }
+ }
+ var posibility2=matched/rtimes;
+ document.getElementById("result").innerHTML=posibility2;
+}
+
 
 
 
@@ -44,9 +63,9 @@ document.getElementById("result").innerHTML = posibility;
 /*
 
 // Beautified Code //
-// For Question 1.(a) to 1.(c)
+// For Question 1.(a) to 1.(c) //
 
-function hahaha(heads) {
+function question1Calculation(heads) {
 
 	var mainCount = 0;
 
@@ -71,7 +90,7 @@ function hahaha(heads) {
 
 }
 
-// End Beautified Code //
+// End Beautified Code / Question 1.(a) to 1.(c) //
 
 */ 
 
