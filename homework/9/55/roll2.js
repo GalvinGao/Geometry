@@ -21,7 +21,7 @@ if (matchCount > heads){
 }
 
 var posibility = mainCount/10000;
-document.getElementById("result").innerHTML = posibility;
+document.getElementById("ResultWrite").innerHTML = posibility;
 
 }
 
@@ -39,7 +39,7 @@ function qtwo(rtimes,match){
   }
  }
  var posibility2=matched/rtimes;
- document.getElementById("result").innerHTML=posibility2;
+ document.getElementById("ResultWrite").innerHTML=posibility2;
 }
 
 
