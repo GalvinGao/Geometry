@@ -42,6 +42,8 @@ function qtwo(rtimes,match){
  document.getElementById("ResultWrite").innerHTML=posibility2;
 }
 
+// = Question 3 = //
+
 
 
 
@@ -91,6 +93,27 @@ function question1Calculation(heads) {
 }
 
 // End Beautified Code / Question 1.(a) to 1.(c) //
+
+
+// Beautified Code //
+// For Question 2 //
+
+function qtwo(rtimes, match) {
+	var matched = 0;
+	for (k = 0; k < rtimes; k++) {
+		var dice1 = Math.floor(Math.random() * 6 + 1);
+		var dice2 = Math.floor(Math.random() * 6 + 1);
+		var dice3 = Math.floor(Math.random() * 6 + 1);
+		var diceSum = dice1 + dice2 + dice3;
+		if (diceSum > match) {
+			matched = matched + 1;
+		}
+	}
+	var posibility2 = (matched / rtimes) * 100 + "%";
+	document.getElementById("ResultWrite").innerHTML = posibility2;
+}
+
+// End Beautified Code / Question 2 //
 
 */ 
 
