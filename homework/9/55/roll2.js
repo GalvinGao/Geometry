@@ -1,10 +1,10 @@
 // = Question 1 = //
 
-function qone(heads){
+function qone(runtimes,heads){
 
 var mainCount = 0;
 
-for (j=0;j<10000;j++){
+for (j=0;j<runtimes;j++){
 
 var matchCount = 0;
 for (i=0;i<10;i++){
@@ -20,7 +20,7 @@ if (matchCount > heads){
 
 }
 
-var posibility = mainCount/10000;
+var posibility = (mainCount/runtimes)*100+"%";
 document.getElementById("ResultWrite").innerHTML = posibility;
 
 }
