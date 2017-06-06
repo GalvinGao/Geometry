@@ -38,7 +38,7 @@ function qtwo(rtimes,match){
     matched=matched+1;
   }
  }
- var posibility2=matched/rtimes;
+ var posibility2=(matched/rtimes)*100+"%";
  document.getElementById("ResultWrite").innerHTML=posibility2;
 }
 
