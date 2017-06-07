@@ -19,7 +19,7 @@
 
   <style>nav .brand-logo,nav ul a{color:#ddd}p{line-height:2rem}.button-collapse{color:#ddd}.parallax-container{min-height:380px;line-height:0;height:auto;color:rgba(255,255,255,.9)}.parallax-container .section{width:100%}@media only screen and (max-width :992px){.parallax-container .section{position:absolute;top:40%}#index-banner .section{top:10%}}@media only screen and (max-width :600px){#index-banner .section{top:0}}.icon-block{padding:0 15px}.icon-block .material-icons{font-size:inherit}footer.page-footer{margin:0}
 @-webkit-keyframes hue{from{-webkit-filter:hue-rotate(0)}to{-webkit-filter:hue-rotate(-360deg)}}
-.huechange{color:#f35626;-webkit-background-clip:text;-webkit-text-fill-color:transparent;-webkit-animation:hue 60s infinite linear;background-image:-webkit-linear-gradient(92deg,#f35626,#f98938);}
+.huechange{color:#f35626;-webkit-background-clip:text;-webkit-text-fill-color:transparent;-webkit-animation:hue 60s infinite linear;background-image:-webkit-linear-gradient(92deg,#f35626,#f98938);}hr{border:none;border-bottom:1px solid #cfcfcf;margin-top:1.6em;margin-bottom:2em;height:10px;}
 /* *{background:#000!important;color:#0f0!important;border:1px solid red!important;} */
 </style>
 </head>
@@ -29,11 +29,11 @@
     <div class="nav-wrapper container"> 
       <a id="logo-container" href="#" class="brand-logo">Geometry</a>
       <ul class="right hide-on-med-and-down">
-        <li class="active white-text"><a href="#">首页</a></li>
+        <li class="active white-text"><a href="#">The only page</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li class="active white-text"><a href="#">首页</a></li>
+        <li class="active white-text"><a href="#">The only page</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -45,9 +45,9 @@
     <div class="modal-content">
       <h4 class="indigo-text text-darken-3" style="margin-top:30px;">Result</h4>
       <p class="indigo-text text-darken-2" style="margin-top:10px;">After some dirty background calculations, the result is shown as below.</p>
-      
-      <p class="huechange light" style="font-size:500%;line-height:2;" id="ResultWrite">calculating...</p>
-            
+      <p class="huechange light center" style="font-size:200%;line-height:1.2;" id="TitleWrite">fetching...</p>
+      <p class="huechange light center" style="font-size:500%;line-height:1.4;" id="ResultWrite">calculating...</p>
+             
     </div>
     <div class="modal-footer">
       <a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
@@ -74,11 +74,11 @@
     <div class="section">
 
       <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
+        <div class="col s12 center"><div class="icon-block">
+          <h2 class="center black-text text-lighten-2"><i class="material-icons">assignment</i></h2>
           <h4>Summary</h4>
           <p class="left-align light">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is just hard to do. Nothing more. LOL.</p>
-        </div>
+        </div></div>
       </div>
 
     </div>
@@ -129,7 +129,7 @@
 	document.getElementById("result").innerHTML = posibility;
 
 }
-</code></pre><br>
+</code></pre><hr>
             <h5 class="center">Active Board</h5>
 
             <p class="light center" style="line-height:1.75;"> 
@@ -181,7 +181,7 @@
 	var posibility2 = (matched / rtimes) * 100 + "%";
 	document.getElementById("result").innerHTML = posibility2;
 }
-</code></pre><br>
+</code></pre><hr>
               <h5 class="center">Active Board</h5>
 
             <p class="light center" style="line-height:1.75;"> 

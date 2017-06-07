@@ -21,6 +21,7 @@ if (matchCount > heads){
 }
 
 var posibility = (mainCount/runtimes)*100+"%";
+document.getElementById("TitleWrite").innerHTML = "Question 1 - Run "+runtimes+" times, "+heads+" heads.";
 document.getElementById("ResultWrite").innerHTML = posibility;
 
 }
