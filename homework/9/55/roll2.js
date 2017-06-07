@@ -40,6 +40,7 @@ function qtwo(rtimes,match){
   }
  }
  var posibility2=(matched/rtimes)*100+"%";
+ document.getElementById("TitleWrite").innerHTML = "Question 2 - Run "+rtimes+" times, "+match+" heads.";
  document.getElementById("ResultWrite").innerHTML=posibility2;
 }
 
