@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Cache-Control" content="public" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <script refer="refer" defer="defer" src="http://cdn.rawgit.com/AlloyTeam/AlloyLever/gh-pages/alloy_lever.min.js"></script>
+    <!--<script refer="refer" defer="defer" src="http://cdn.rawgit.com/AlloyTeam/AlloyLever/gh-pages/alloy_lever.min.js"></script>-->
   <!-- CSS  -->
   <link href="http://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.min.css" rel="stylesheet">
   <link href="http://cdn.bootcss.com/materialize/0.98.2/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -50,7 +50,7 @@
              
     </div>
     <div class="modal-footer">
-      <a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      <a class="modal-action modal-close waves-effect waves-purple btn-flat">Close</a>
     </div>
   </div>
          
@@ -113,7 +113,7 @@
 
 		var matchCount = 0;
 		for (i = 0; i < 10; i++) {
-			var randomNumber = Math.floor(Math.random() * 2) // Random Generates 0,1 two conditions
+			var randomNumber = Math.floor(Math.random() * 2)
 			if (randomNumber == 0) {
 				var matchCount = matchCount + 1;
 			}
@@ -125,7 +125,7 @@
 
 	}
 
-	var posibility = mainCount / 10000;
+	var posibility = (mainCount / 10000) * 100 + "%";
 	document.getElementById("result").innerHTML = posibility;
 
 }
@@ -209,15 +209,29 @@
   <div class="container">
     <div class="section">
 
-      <!--   Icon Section   -->
       <div class="row">
         <div class="col s12">
           <div class="icon-block">
             <h2 class="center black-text text-lighten-2"><i class="material-icons">panorama_fish_eye</i></h2>
-            <h5 class="center">Active Board</h5>
+<h5 class="center">Code Snippet</h5>
+<pre class="line-numbers"><code class="language-javascript">function question3CalculationDemo(runtimet) {
+	var qthreemain = 0;
+	for (m = 0; m < runtimet; m++) {
+		var x = Math.random() * 3;
+		var y = Math.random() * 3;
+		if ((x - 1) * (x - 1) + (y - 1) * (y - 1) < 1 &&
+		    (x - 2) * (x - 2) + (y - 2) * (y - 2) < 1) {
+			qthreemain = qthreemain + 1;
+		}
+	}
+	var posibility3 = (qthreemain / runtimet) * 100 + "%";
+	document.getElementById("result").innerHTML = posibility3;
+}
+</code></pre><hr>
+              <h5 class="center">Active Board</h5>
 
             <p class="light center" style="line-height:1.75;"> 
-<a class="modal-trigger waves-effect waves-light btn" href="#ResultModel" onclick="qtwo(5);"><i class="material-icons left">looks_3</i>Result of Question 3</a>
+<a class="modal-trigger waves-effect waves-light btn" href="#ResultModel" onclick="qthree(10000);"><i class="material-icons left">looks_3</i>Result of Question 3</a>
 </p>
           </div>
         </div>
@@ -249,8 +263,8 @@
   <!-- Scripts -->
   <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script src="http://cdn.bootcss.com/materialize/0.98.2/js/materialize.min.js"></script>
-  <script>(function($){$(function(){$('.button-collapse').sideNav();$('.parallax').parallax()})})(jQuery); //手机版menu与parallex的初始化
- $(document).ready(function(){$('#ResultModel').modal();$('#NothingAtHere').modal()}); //modal模态框初始化
+  <script>(function($){$(function(){$('.button-collapse').sideNav();$('.parallax').parallax()})})(jQuery); //initial menu and parallex
+ $(document).ready(function(){$('#ResultModel').modal();$('#NothingAtHere').modal()}); //initial modal
 
 
 function pad(num, n) {

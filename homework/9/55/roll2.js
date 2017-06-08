@@ -46,7 +46,19 @@ function qtwo(rtimes,match){
 
 // = Question 3 = //
 
-
+function qthree(runtimet){
+  var qthreemain = 0;
+  for (m=0;m<runtimet;m++){
+    var x = Math.random()*3;
+    var y = Math.random()*3;
+    if ( (x-1)*(x-1)+(y-1)*(y-1)<1 && (x-2)*(x-2)+(y-2)*(y-2)<1 ){
+      qthreemain = qthreemain + 1;
+    }
+  }
+  var posibility3 = (qthreemain/runtimet)*100+"%";
+  document.getElementById("TitleWrite").innerHTML = "Question 3 - Run "+runtimet+" times.";
+  document.getElementById("ResultWrite").innerHTML=posibility3;
+}
 
 
 
@@ -96,11 +108,12 @@ function question1Calculation(heads) {
 
 // End Beautified Code / Question 1.(a) to 1.(c) //
 
+// = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - //
 
 // Beautified Code //
 // For Question 2 //
 
-function qtwo(rtimes, match) {
+function question2Calculation(rtimes, match) {
 	var matched = 0;
 	for (k = 0; k < rtimes; k++) {
 		var dice1 = Math.floor(Math.random() * 6 + 1);
