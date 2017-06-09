@@ -130,6 +130,27 @@ function question2Calculation(rtimes, match) {
 
 // End Beautified Code / Question 2 //
 
+// = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - //
+
+// Beautified Code //
+// For Question 3 //
+
+function question3Calculation(runtimet) {
+	var qthreemain = 0;
+	for (m = 0; m < runtimet; m++) {
+		var x = Math.random() * 3;
+		var y = Math.random() * 3;
+		if ((x - 1) * (x - 1) + (y - 1) * (y - 1) < 1 &&
+		    (x - 2) * (x - 2) + (y - 2) * (y - 2) < 1) {
+			qthreemain = qthreemain + 1;
+		}
+	}
+	var posibility3 = (qthreemain / runtimet) * 100 + "%";
+	document.getElementById("result").innerHTML = posibility3;
+}
+
+// End Beautified Code / Question 3 //
+
 */ 
 
 
