@@ -84,7 +84,7 @@
             color: #f35626;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            -webkit-animation: hue 60s infinite linear;
+            -webkit-animation: hue 30s infinite linear;
             background-image: -webkit-linear-gradient(92deg, #f35626, #f98938);
         }
 
@@ -156,7 +156,8 @@
                     <div class="icon-block">
                         <h2 class="center black-text text-lighten-2"><i class="material-icons">assignment</i></h2>
                         <h4>Summer Homework - 2</h4>
-                        <p class="left-align light">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Do a lot of math, background calculations, prove. Some of the inspiration is from <a href="https://en.wikipedia.org/wiki/Torus/">Wikipedia</a> and my friend <a href="https://github.com/BYTEGOING">@BYTEGOING</a>. Thank You ALL!</p>
+                        <p class="left-align light">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&#39;ve did a lot of math, background calculations, prove on this homework and it took me 11 hours and 10 minutes to done it. Some of the inspiration is from <a href="https://en.wikipedia.org/wiki/Torus/">Wikipedia</a>. A lot amendments of this homework is submitted by my friend <a href="https://github.com/BYTEGOING">@BYTEGOING</a>. When myself is doing this homework, he also synchronicity write this program in Java and reached all features. Check it out at <a href="https://github.com/BYTEGOING/calc_torus">https://github.com/BYTEGOING/calc_torus</a>! Huge thanks to you guys!!! &#128526;</p>
+                        <p class="left-align light" style="background: #ef5350; padding: 1em; color: #fff;">Please notice:<br>Depend on the size you have entered in this program, the result may have a really big difference than the expected value. If you can, please use more randomize times to give a better precision. Thanks!</p>
                     </div>
                 </div>
             </div>
@@ -183,7 +184,7 @@
             <div class="row">
                 <div class="col s12">
                     <div class="icon-block">
-                        <h2 class="center black-text text-lighten-2"><i class="material-icons">check_box_outline_blank</i></h2>
+                        <h2 class="center black-text text-lighten-2"><i class="material-icons">&#128526;</i></h2>
                         <h5 class="center">Code Snippet</h5>
                         <pre class="line-numbers"><code class="language-javascript">function calc(interR, outerR, times) {
     // === Variable Initiation === //
@@ -269,15 +270,15 @@
                          <div class="row">
                          <div class="col s12 m6 l6">
                             <div class="input-field col s12">
-                                <input id="userinputInner" type="text" class="validate" placeholder="Enter torus inner radius in integer.">
+                                <input id="userinputInner" type="text" placeholder="Enter torus inner radius in integer.">
                                 <label for="userinputInner">Inner Radius</label>
                             </div>
                             <div class="input-field col s12">
-                                <input id="userinputOuter" type="text" class="validate" placeholder="Enter torus outer radius in integer.">
+                                <input id="userinputOuter" type="text" placeholder="Enter torus outer radius in integer.">
                                 <label for="userinputOuter">Outer Radius</label>
                             </div>
                             <div class="input-field col s12">
-                                <input id="userinputTimes" type="text" class="validate" placeholder="Enter how many times you want to random in integer.">
+                                <input id="userinputTimes" type="text" placeholder="Enter how many times you want to random in integer.">
                                 <label for="userinputTimes">Run Times</label>
                             </div><br>
                             <a class="waves-effect waves-light btn" id="#CustomCalcButton" onclick="CustomCalc();"><i class="material-icons left">play_circle_filled</i>Run</a><br><br>
@@ -301,8 +302,8 @@
             <div class="row">
 
                 <div class="col l5 s12">
-                    <h5 class="white-text">Geometry</h5>
-                    <p class="grey-text text-lighten-4">Geometry is good 4 u. Do it!</p>
+                    <h5 class="huechange">Geometry</h5>
+                    <p class="huechange">Geometry is good 4 u. Do it!</p>
                 </div>
             </div>
         </div>
@@ -340,12 +341,25 @@
             return num;
         }
         
+         function toInt(number) {
+            return number*1 | 0 || 0;
+        }
+        
         function CustomCalc(){
-            var goInner = document.getElementById("userinputInner").value;
-            var goOuter = document.getElementById("userinputOuter").value;
-            var goTimes = document.getElementById("userinputTimes").value;
-            calc(goInner, goOuter, goTimes);
-            $('#ResultModel').modal('open');
+            var goInner = toInt(document.getElementById("userinputInner").value);
+            var goOuter = toInt(document.getElementById("userinputOuter").value);
+            var goTimes = toInt(document.getElementById("userinputTimes").value);
+            var smallr = goOuter - goInner;
+            if (goOuter < smallr) {
+                calc(goInner, goOuter, goTimes);
+                $('#ResultModel').modal('open');
+            } else if (goOuter > smallr) {
+                Materialize.toast("'Inner Radius' cannot smaller than 'Ring Radius'.<br>Please check your input and try again.", 10000);
+            } else if (goOuter = smallr) {
+                Materialize.toast("'Inner Radius' cannot equal 'Ring Radius'.<br>Please check your input and try again.", 10000);
+            } else {
+                Materialize.toast("You are six six six. Unexpected Error. Please contact Galvin.", 10000);
+            }
         }
     </script>
     <script src="http://projects.qn.iblueg.cn/geom/prismjs.js"></script>
