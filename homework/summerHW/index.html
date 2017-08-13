@@ -188,7 +188,8 @@
                     <div class="icon-block">
                         <h2 class="center black-text text-lighten-2"><i class="material-icons">&#128526;</i></h2>
                         <h5 class="center">Code Snippet</h5>
-                        <pre class="line-numbers"><code class="language-javascript">function calc(interR, outerR, times) {
+                        <pre class="line-numbers"><code class="language-javascript">function calculationDemoSummerHomeworkByGalvin(interR, outerR, times) {
+    
     // === Variable Initiation === //
     
     var counter = 0;
@@ -199,11 +200,11 @@
 
     var trueR = outerR - interR; // The ring's radius
     var circleD = trueR * 2; // The circle diameter 
-    var trueRDouble = trueR * trueR;
+    var trueRDouble = trueR * trueR; // The double of ring's radius, used as calculating surface area
     var height = outerR * Math.PI * 2;
 
-    var picker1 = Math.floor(Math.random() * times);
-    var picker2 = Math.floor(Math.random() * times);
+    var picker1 = Math.floor(Math.random() * times); // Randomly pick up the data to debug. No worries about performance
+    var picker2 = Math.floor(Math.random() * times); // Same as the following four
     var picker3 = Math.floor(Math.random() * times);
     var picker4 = Math.floor(Math.random() * times);
     var picker5 = Math.floor(Math.random() * times);
@@ -212,30 +213,27 @@
     // === Question 1 === //
 
     for (var i = 0; i < times; i++) {
-        x = Math.random() * circleD;
-        y = Math.random() * circleD;
-        z = Math.random() * height;
+        x = Math.random() * circleD; // Generate random x for the point
+        y = Math.random() * circleD; // Generate random y for the point
+        z = Math.random() * height; // Generate random z for the point
 
-        // d = (x - trueR) * (x - trueR) + (y - trueR) * (y - trueR);
-
+        // d = (x - trueR) * (x - trueR) + (y - trueR) * (y - trueR); //[Backup Method] THIS IS THE METHOD 2. CURRENTLY USING METHOD 1
         // Center X and Y are all trueR.
+        // \sqrt{(x-trueR)^2+(y-trueR)^2} in JavaScript can not be calculated by one equation. We have to introduce the Math.sqrt() method.
 
-        // \sqrt{(x-trueR)^2+(y-trueR)^2} in JavaScript can not be calculated by one equation.
-        // We have to introduce the Math.sqrt() method.
+        var distanceWithoutSqrt = (x - trueR) * (x - trueR) + (y - trueR) * (y - trueR); 
+        var distanceToCenter = Math.sqrt(distanceWithoutSqrt); // Calculate the distance from the point to the center
 
-        var distanceWithoutSqrt = (x - trueR) * (x - trueR) + (y - trueR) * (y - trueR);
-        var distanceToCenter = Math.sqrt(distanceWithoutSqrt);
-
-        //if (d < trueRDouble) {
-        if (distanceToCenter <= trueR) {
-            if (0 < z < height) {
-                counter += 1;
+        //if (d < trueRDouble) { // [Backup Method] THIS IS THE METHOD 2. CURRENTLY USING METHOD 1
+        if (distanceToCenter <= trueR) { // See if the point is greater than the radius or not
+            if (0 < z < height) { // If the x and y check is passed, let us check z
+                counter += 1; // Bingo! Now add the counter
                 // document.getElementById("resultdiv").innerHTML += ""+x+","+y+","+z+"<br>";
             }
         }
 
-        if (i == picker1 || i == picker2 || i == picker3 || i == picker4 || i == picker5) {
-            console.log("x: " + x + " y: " + y + " z: " + z + " d: " + d);
+        if (i == picker1 || i == picker2 || i == picker3 || i == picker4 || i == picker5) { // Match the random pick point to debug
+            console.log("x: " + x + " y: " + y + " z: " + z + " d: " + d); // Print out the debug message to the console
         }
         
         // document.getElementById("resultdiv").innerHTML += ""+x+","+y+","+z+"<br>";
@@ -244,15 +242,22 @@
     
     // === Question 2 === //
     
-    var equationVolume = 2 * Math.PI * Math.PI * outerR * trueR * trueR;
+    var equationVolume = 2 * Math.PI * Math.PI * outerR * trueR * trueR; // A simple equation to get the volume
     
     
     // === Calculation / Debug Output === //
     
-    var resultPosibility = counter / times;
-    var result = (trueR * 2) * (trueR * 2) * height * resultPosibility;
-    document.getElementById("TitleWrite").innerHTML = result;
-    document.getElementById("ResultWrite").innerHTML = result;
+    var resultPosibility = counter / times; // Calculate the posibility to get in the shape
+    var result = (trueR * 2) * (trueR * 2) * height * resultPosibility; // Calculate the volume 
+    var rawRatio = equationVolume / result; // Just the ratio. Preparing for the percentage format.
+    var resultRatio = (rawRatio) * 100; // Multiply by 100 to give it a percentage number! We will add the '%' later on
+    console.log("trueR: " + trueR + " Pi: " + Math.PI + " height: " + height + " resultPosibility: " + resultPosibility + " counter: " + counter + " result: " + result); // Debug message to help us find the problem
+    document.getElementById("TitleWrite").innerHTML = "Calculation result of program 'inner radius "+interR+", outer radius "+outerR+" and random for "+times+" times'"; // Write the title to the message box - modal
+    document.getElementById("ResultWrite").innerHTML = result.toFixed(8); // Fix 8 decimals and then write the result
+    document.getElementById("EVWrite").innerHTML = equationVolume.toFixed(4); // Fix 4 decimals and then write the equation volume result
+    document.getElementById("RatioWrite").innerHTML = resultRatio.toFixed(4) + "%"; // Fix 4 decimals and then write the ratio
+    
+    // And we finally done - with calculations!
 }
 </code></pre>
                         <hr>
@@ -365,7 +370,7 @@
         }
     </script>
     <script src="http://projects.qn.iblueg.cn/geom/prismjs.js"></script>
-    <script src="main.js"></script>
+    <script src="production.js"></script>
 </body>
 
 </html>
