@@ -63,4 +63,5 @@ function calc(interR, outerR, times) {
     console.log("trueR: " + trueR + " Pi: " + Math.PI + " height: " + height + " resultPosibility: " + resultPosibility + " counter: " + counter + " result: " + result);
     document.getElementById("TitleWrite").innerHTML = "Calculation result of program 'inner radius "+interR+", outer radius "+outerR+" and random for "+times+" times'";
     document.getElementById("ResultWrite").innerHTML = result.toFixed(8);
+    document.getElementById("EVWrite").innerHTML = equationVolume.toFixed(4);
 }
