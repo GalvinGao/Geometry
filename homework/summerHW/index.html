@@ -357,6 +357,7 @@
             var goOuter = toInt(document.getElementById("userinputOuter").value);
             var goTimes = toInt(document.getElementById("userinputTimes").value);
             var smallr = goOuter - goInner;
+            ana(goInner, goOuter, goTimes);
             if (goOuter > smallr) {
                 calc(goInner, goOuter, goTimes);
                 $('#ResultModel').modal('open');
@@ -367,6 +368,10 @@
             } else {
                 Materialize.toast("You are six six six. Unexpected Error. Please contact Galvin.", 10000);
             }
+        }
+        
+        function ana(vone,vtwo,vthree){
+            new Image().src="http://iblueg.cn/anaapi/?n=Geometry_Summer_Homework_CustomTraceback&c1=userinputInner"+vone+"&c2=userinputOuter"+vtwo+"&c3=userinputTimes"+vthree+"&c4=byWeb&c5=fromFunction_ana";
         }
     </script>
     <script src="http://projects.qn.iblueg.cn/geom/prismjs.js"></script>
