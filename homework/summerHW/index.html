@@ -286,7 +286,7 @@
                             </div>
                             <div class="input-field col s12">
                                 <input id="userinputTimes" type="text" placeholder="Enter how many times you want to random in integer.">
-                                <label for="userinputTimes">Run Times</label>
+                                <label for="userinputTimes">Run Times [Please as minimum, use 500000 times]</label>
                             </div><br>
                             <a class="waves-effect waves-light btn" id="#CustomCalcButton" onclick="CustomCalc();"><i class="material-icons left">play_circle_filled</i>Run</a><br><br>
                         </div>
@@ -338,7 +338,6 @@
             $('#ResultModel').modal();
         }); //initial modal
 
-
         function pad(num, n) {
             var len = num.toString().length;
             while (len < n) {
@@ -357,7 +356,6 @@
             var goOuter = toInt(document.getElementById("userinputOuter").value);
             var goTimes = toInt(document.getElementById("userinputTimes").value);
             var smallr = goOuter - goInner;
-            ana(goInner, goOuter, goTimes);
             if (goOuter > smallr) {
                 calc(goInner, goOuter, goTimes);
                 $('#ResultModel').modal('open');
@@ -369,9 +367,9 @@
                 Materialize.toast("You are six six six. Unexpected Error. Please contact Galvin.", 10000);
             }
         }
-        
-        function ana(vone,vtwo,vthree){
-            new Image().src="http://iblueg.cn/anaapi/?n=Geometry_Summer_Homework_CustomTraceback&c1=userinputInner"+vone+"&c2=userinputOuter"+vtwo+"&c3=userinputTimes"+vthree+"&c4=byWeb&c5=fromFunction_ana";
+
+        function runAnalysis(anavone,anavtwo,anavthree,inputGo){
+            new Image().src="http://iblueg.cn/anaapi/?n=Geometry_Summer_Homework_CustomTraceback&c1=userRuns ["+inputGo+"]&c2=programResult ["+anavone+"]&c3=equationResult ["+anavtwo+"]&c4=runRatio ["+anavthree+"]&c5=ResultAnalysis_sql";
         }
     </script>
     <script src="http://projects.qn.iblueg.cn/geom/prismjs.js"></script>
