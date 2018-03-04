@@ -84,8 +84,25 @@ plotY = []
 
 for i in range(loopTime):
     # Loop the data here
-        # formula here
+    velocityY = 2 * math.pow(10, 3)
+    velocityX = 0
+    yHelper = 0
+    xHelper = 4 * math.pow(10, 5)
+    accX = 29.18125
+    accy = 0
+    xTemp = 9000
+    yTemp = 0
 
+    realTime = 0 # Equalivent effect as [Time (s)] in Excel. (此变量为自增变量，在运行单次 loopTime 周期时累加 timeConstant )
+
+    velocityX = velocityX + serieX * timeConstant
+    velocityY = velocityY + serieY * timeConstant
+    accX = xHelper * GravC * massMoon / math.pow(math.pow(x, 2) + math.pow(y, 2), 2 / 3)
+    accY = yHelper * GravC * massMoon / math.pow(math.pow(x, 2) + math.pow(y, 2), 2 / 3)
+    xHelper = xHelper + velocityX * timeConstant + 0.5 * accX * math.pow(timeConstant, 2)
+    yHelper = yHelper + velocityY * timeConstant + 0.5 * accY * math.pow(timeConstant, 2)
+    xTemp = - (xTemp + (velocityX + accX * timeConstant) * timeConstant + 0.5 * (xHelper + velocityX * timeConstant + 0.5 * accX * math.pow(timeConstant, 2) * GravC * massMoon / math.pow(math.pow(xHelper + velocityX * timeConstant + 0.5 * accX * math.pow(timeConstant, 2), 2) + math.pow(yHelper + velocityY * timeConstant + 0.5 * accY * math.pow(timeConstant, 2), 2), 2 / 3)) * math.pow(timeConstant, 2))
+    yTemp = - (yTemp + (velocityY + accY * timeConstant) * timeConstant + 0.5 * (yHelper + velocityY * timeConstant + 0.5 * accY * math.pow(timeConstant, 2) * GravC * massMoon / math.pow(math.pow(xHelper + velocityX * timeConstant + 0.5 * accX * math.pow(timeConstant, 2), 2) + math.pow(yHelper + velocityY * timeConstant + 0.5 * accY * math.pow(timeConstant, 2), 2), 2 / 3)) * math.pow(timeConstant, 2))
 
     # Necessary updates to variables
     realTime += timeConstant
