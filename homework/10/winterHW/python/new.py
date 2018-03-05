@@ -25,6 +25,7 @@ print(initialMsg)
 # === Import required libraries === #
 import math
 import matplotlib.pyplot as plt
+import timeit
 from tqdm import tqdm
 
 def poi(num, power):
