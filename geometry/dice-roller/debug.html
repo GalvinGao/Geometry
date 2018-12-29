@@ -1,0 +1,19 @@
+<body style="margin:4em;">
+
+<h1>Debug Homework 55</h1>
+<h3 style="line-height:1.4;margin-bottom:2.5em;">This page debugs the JavaScript in hw-9-55. Used AlloyLever to be able to catch exception and debug on mobile devices. A good tool to use!</h3>
+
+<script defer="defer" src="//cdn.rawgit.com/AlloyTeam/AlloyLever/gh-pages/alloy_lever.min.js"></script>
+<script defer="defer" src="roll.js"></script>
+
+<button onclick="flip(10,5,2);">calculate posibility of (flip 10 time, matches >= 6 heads & 2 faces (coin))</button><br>
+
+<button onclick="flip(10,20,60);">calculate posibility of (flip 10 time, matches >= 20 heads & 6 faces (dice))</button>
+
+<hr>
+<h4>Result: </h4><h5 id="result">undefined</h5>
+
+<hr>
+<button onclick="alert(Math.floor(Math.random() * 2));">random integer 1-2</button>
+
+</body>

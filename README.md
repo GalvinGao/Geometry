@@ -1,4 +1,7 @@
-# MathCourse
-This repo stores file that refers to `MATH`. LOL.
+# The Beauty of Education
 
-* Note: GalvinGao/Geometry is no longer a valid repository in GitHub. Instead of `Geometry`, we `MATH`!!1
+## Table of Contents
+- Course: Geometry
+    - []
+- Course: Pre-Calculus
+- Course: AP Chemistry

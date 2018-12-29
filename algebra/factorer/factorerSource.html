@@ -1,0 +1,212 @@
+<html>
+<head>
+  <style>body {
+    padding: 3em;
+  }</style>
+</head>
+<body>
+<h1>Factorer</h1>
+<label for="a">a: </label><input type="number" id="a"/><br/>
+<label for="b">b: </label><input type="number" id="b"/><br/>
+<label for="c">c: </label><input type="number" id="c"/><br/><br/>
+<button onclick="factorer()">Go ></button>
+<p id="result"></p>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        crossorigin="anonymous"></script>
+
+<script>
+  function int(number) {
+    return Number(number);
+  }
+
+  function sqrt(number) {
+    return Math.sqrt(number);
+  }
+
+  function abs(number) {
+    return Math.abs(number);
+  }
+
+  function pow(number, component) {
+    return Math.pow(number, component)
+  }
+
+  function msg(status, string, time) {
+    console.log('[' + status + '] ' + string);
+    return true;
+  }
+
+  function dev(entity, message, toast) {
+    console.log('[Debug] (var ' + entity + '): ' + message);
+    return true;
+  }
+
+  function printLine() {
+    console.log('==================')
+  }
+
+  function simplify(number, nosimp1) {
+    var number = number.toString();
+    if (number == "-1") {
+      return "-"
+    } else if (number == "-") {
+      return "-"
+    } else if (number == "+1") {
+      return ""
+    } else if (number == "+") {
+      return ""
+    } else if (number == "1" && !nosimp1) {
+      return ""
+    } else if (number.indexOf("+") > -1) {
+      return number.replace(/\+/g, "")
+    } else {
+      return number
+    }
+  }
+
+  function showresult(string) {
+    $("#result").html(string);
+    MathJax.Hub.Typeset(); // Let MathJax render the LaTeX language
+  }
+
+  function factorer() {
+    // This is the code as seen as on //Phaidu.com/Factorer.html with Galvin Flavored
+    var a = int($("#a").val());
+    var b = int($("#b").val());
+    var c = int($("#c").val());
+    var x1 = 0.0;
+    var x2 = 0.0;
+    var signX1 = "";
+    var signX2 = "";
+    var coef1 = "";
+    var coef2 = "";
+    var factored = "";
+    var neg = "";
+    if (a < 0) {
+      neg = "-";
+      dev("neg", neg);
+      a = -a; //dev("a",a);
+      b = -b; //dev("b",b);
+      c = -c;
+      dev("a,b,c", a + ", " + b + ", " + c);
+    }
+    if (pow(b, 2) - 4 * a * c >= 0) {
+      for (d = 1; d <= a; d++) {
+        printLine();
+        d = parseFloat(d);
+        dev("d", d, false);
+        x1 = -d * (-b - sqrt(b * b - 4 * a * c)) / 2.0 / a;
+        dev("x1", x1, false);
+        if (x1 > 0) {
+          signX1 = "+";
+          dev("signX1", "true", false);
+        }
+        if (d != 1) {
+          coef1 = parseInt(d).toString();
+          dev("coef1", coef1, false);
+        }
+        x2 = (-a / d) * (-b + Math.sqrt(b * b - 4 * a * c)) / 2.0 / a;
+        dev("x2", x2, false);
+        if (x2 > 0) {
+          signX2 = "+";
+          dev("signX2", "true", false);
+        }
+        if (parseInt(a / d) != 1) {
+          coef2 = parseInt(a / d).toString();
+          dev("coef2", coef2, false);
+        }
+        if (abs((a / d) - parseInt(a / d)) < 0.00001 && abs(x1 - parseInt(x1)) < 0.00001 && abs(x2 - parseInt(x2)) < 0.00001) {
+          if (coef1 == coef2 && signX1 == signX2 && resultGet != 0) {
+            factored = "\\(" + simplify(neg) + "\\left(" + simplify(coef1) + "x" + signX1 + parseInt(x1).toString() + "\\right)^{2}\\)"
+            showresult(factored);
+            var resultGet = "0";
+            dev("resultGet", resultGet);
+            break;
+          } else if (resultGet != "0") {
+            dev("resultGet", resultGet);
+            factored = "\\(" + simplify(neg) + "\\left(" + simplify(coef1) + "x" + signX1 + parseInt(x1).toString() + "\\right)\\left(" + simplify(coef2) + "x" + signX2 + parseInt(x2).toString() + "\\right)\\)";
+            dev("factored", factored);
+            showresult(factored);
+            var resultGet = "0";
+          }
+        }
+      }
+    } else {
+      msg("Warning", "Conditions not matched in mrtreyMethod() 2nd cond.", 5000)
+      msg("Debug", "Trying fallback method...", 5000);
+      answer(a, b, c); // Call the fallback method
+    }
+  }
+
+  function answer(a, b, c) {
+    // This is the method that Arthur provided for fallback answers render
+    try {
+      //var a = int($("#a").val());
+      //var b = int($("#b").val());
+      //var c = int($("#c").val());
+      msg("Debug", "Get a,b,c from function call: a:" + a + ", b:" + b + ", c:" + c, 5000);
+
+      var delta = pow(b, 2) - 4 * a * c;
+      dev("delta", delta, 5000); // Calculate the Delta (small triangle, which is b^2-4ac).
+
+      //$("#inputEquation").html("\\( "+ a +"x^{2}+"+ b +"x+"+ c +" \\)"); // Print the equation into the result panel.
+
+      if (b == 0 && abs(sqrt(a) - int(sqrt(a))) < 0.000001 && c < 0 && int(sqrt(abs(c))) == sqrt(abs(c))) { // is sqrt(a) equal to int(a) ?
+        //var a = simplify(a);
+        //var b = simplify(b);
+        //var c = simplify(c);
+        var output = "\\( \\left(" + simplify(sqrt(a)) + "x" + simplify(0 - sqrt(abs(c))) + "  \\right) \\left(" + simplify(sqrt(a)) + "x" + simplify(0 - sqrt(abs(c))) + "\\right) \\)";
+        msg("Debug", "Method Used: answer,1", true);
+        showresult(output);
+      } else if (delta > 0) {
+        var output = "\\( \\left( " + simplify(a) + "x - \\frac{ " + simplify(-b) + " - \\sqrt{" + simplify(b) + "^{2}-4" + simplify(a) + "" + simplify(c) + "}}{2} \\right) \\left( x - \\frac{ - " + simplify(b) + " - \\sqrt{" + simplify(b) + "^{2}-4" + simplify(a) + "" + simplify(c) + "}}{" + simplify(2 * a) + "} \\right) \\)";
+        msg("Debug", "Method Used: answer,2", true);
+        showresult(output);
+      } else if (delta == 0) {
+        //var a = simplify(a);
+        //var b = simplify(b);
+        //var c = simplify(c);
+        var output = "\\( " + simplify(a) + " \\left( x \\frac{" + simplify(-b) + "}{" + simplify(2 * a) + "} \\right)^{2} \\)";
+        showresult(output);
+      } else if (delta < 0) {
+        msg("Debug", "Method Used: answer,3", true);
+        if (sqrt(pow(b, 2) - 4 * a * c) < 0) {
+          var hasi = true;
+        } // Just an extra check.
+        var delta = -delta;
+        var d = a / c;
+        var calc1 = d * (-b / 2 * a);
+        var calc2 = d / (2 * a) * (sqrt(4 * a * c - pow(b, 2)));
+        var calc3 = d / a;
+        var calc4 = (-a / d) * (-b / 2 * a);
+        var calc5 = (a / (2 * a * d)) * (sqrt(4 * a * c) - pow(b, 2));
+        dev("calc1to5", calc1 + ", " + calc2 + ", " + calc3 + ", " + calc4 + ", " + calc5);
+        if (typeof calc1 == "integer" && typeof calc2 == "integer" && typeof calc3 == "integer" && typeof calc4 == "integer" && typeof calc5 == "integer") {
+          //if (hasi) {
+          showresult("\\( \\left( x+1+i \\right) \\left( x+1-i \\right) \\)");
+          //} else {
+          //	showresult("\\( \\left( x+1+i \\right) \\left( x+1-i \\right) \\)");
+          //}
+        } else if (a > 0 && b == 0 & c > 0) {
+          var output = "\\( \\left(" + simplify(sqrt(a)) + "x+" + simplify(sqrt(abs(c))) + "i \\right) \\left(" + simplify(sqrt(a)) + "x" + simplify(0 - sqrt(abs(c))) + "i \\right) \\)";
+          msg("Debug", "Method Used: answer,4", true);
+          showresult(output);
+        } else {
+          msg("Error", "Not integer.", 7500);
+        }
+        //var output = "\\( "+ a +" \\left( x - \\frac{-"+ b +"-i\\sqrt{-\\left( "+ pow(b,2) +"-4"+ a +""+ c +" \\right)}}{"+ 2*a +"} \\right) \\left( x - \\frac{-"+ b +"+i\\sqrt{-\\left( "+ pow(b,2) +"-4"+ a +""+ c +" \\right)}}{"+ 2*a +"} \\right) \\)";
+        //showresult(output);
+      } else {
+        msg("Warning", "No delta condition matched, using final method.", 5000);
+        var output = "\\( \\left( " + simplify(a) + "x - \\frac{ " + simplify(-b) + " - \\sqrt{" + simplify(b) + "^{2}-4" + simplify(a) + "" + simplify(c) + "}}{2} \\right) \\left( x - \\frac{ - " + simplify(b) + " - \\sqrt{" + simplify(b) + "^{2}-4" + simplify(a) + "" + simplify(c) + "}}{" + simplify(2 * a) + "} \\right) \\)";
+        msg("Debug", "Method Used: final fallback", true);
+        showresult(output);
+      }
+    } catch (e) {
+      msg("JavaScript", e + ". Please smash Galvin.", 5000);
+    }
+  }
+</script>
+</body>
+</html>
